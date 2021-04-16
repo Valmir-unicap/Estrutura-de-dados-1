@@ -1,5 +1,4 @@
 # Estrutura-de-dados-1
-Disciplina de estrutura de dados 1 - JAVA
 
 # Objetivos
 
