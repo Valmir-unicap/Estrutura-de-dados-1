@@ -44,13 +44,13 @@ public class LDE {//ordenada ordem crescente
             this.ultimo = novo;
             this.qtd++;
             System.out.println("Inserção realizada");
-        }else if (c.compareTo(this.primeiro.getInfo()) > 0) { // inserção antes do primeiro //Feito em aula
+        }else if (c.compareTo(this.primeiro.getInfo()) >= 0) { // inserção antes do primeiro //Feito em aula
             novo.setProx(this.primeiro);
             this.primeiro.setAnt(novo);
             this.primeiro = novo;
             this.qtd++;
             System.out.println("Inserção realizada no começo da lista");
-        }else if (c.compareTo(this.ultimo.getInfo()) < 0) { // inserção após o último //Feito em aula
+        }else if (c.compareTo(this.ultimo.getInfo()) <= 0) { // inserção após o último //Feito em aula
             this.ultimo.setProx(novo);
             novo.setAnt(this.ultimo);
             this.ultimo = novo;
@@ -63,7 +63,7 @@ public class LDE {//ordenada ordem crescente
                 if(retorno==0){ //encontrou mas é repetido
                     System.out.println("Repetido! "); 
                     return;
-                } else if (retorno>0){//inserir no meio
+                } else if (retorno>=0){//inserir no meio
                     anterior= aux.getAnt();
                     novo.setAnt(anterior);//criando meu nó
                     novo.setProx(aux);//criando meu nó
