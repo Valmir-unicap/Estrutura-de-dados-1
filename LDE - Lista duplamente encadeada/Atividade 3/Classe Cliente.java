@@ -13,7 +13,7 @@ public class Cliente implements Comparable <Cliente>{
         this.cpf=cpf;
     }
 
-    public Cliente(String cpf, String nome, String fone, String email){//permite repetidos
+    public Cliente(String cpf, String nome, String fone, String email){//não permite repetidos
         this.cpf=cpf;
         this.nome=nome;
         this.email=email;
