@@ -7,6 +7,8 @@ package listaduplamenteencadeada;
 //1- Inserir em ordem descrescente
 //2- Permitir valores repetidos -Após -Antes
 
+//função não se exibe mensagem
+
 public class LDE {//ordenada ordem crescente
 
     private Node primeiro;
@@ -24,7 +26,7 @@ public class LDE {//ordenada ordem crescente
         Node aux;
         if (this.isEmpty() == true) {
             System.out.println("Não existem clientes cadastrados!");
-        }else{
+        } else {
             aux = this.primeiro;
             while (aux != null) {
                 System.out.println(aux.getInfo());
@@ -32,7 +34,7 @@ public class LDE {//ordenada ordem crescente
             }
         }
     }
-    public void inserirOrdenado (Cliente c) {//decrescente
+    public void inserirOrdenado2 (Cliente c) {
         Node novo = new Node (c);
         Node aux,anterior;
         int retorno;
@@ -59,9 +61,9 @@ public class LDE {//ordenada ordem crescente
             while(aux!=null){
                 retorno= aux.getInfo().compareTo(c);
                 if(retorno==0){ //encontrou mas é repetido
-                    System.out.println("Repetido! Inserção não foi realizada! "); 
+                    System.out.println("Repetido! "); 
                     return;
-                } else if (retorno<0){//inserir no meio
+                } else if (retorno>0){//inserir no meio
                     anterior= aux.getAnt();
                     novo.setAnt(anterior);//criando meu nó
                     novo.setProx(aux);//criando meu nó
@@ -76,52 +78,65 @@ public class LDE {//ordenada ordem crescente
             }
         }  
     } 
-    private Node buscaMelhorada(Cliente c){//serve para buscar no meio em ordem crescente
+    public Node buscaMelhorada(Cliente c){//serve para buscar no meio em ordem crescente
         Node aux;
         int retorno;
         if(this.isEmpty()==true){
             System.out.println("Lista vázia!");
         }else{
-            aux=this.ultimo;
-            while(aux!=this.primeiro){
+            aux=this.primeiro;
+            while(aux!=null){
                 retorno= aux.getInfo().compareTo(c);
                 if(retorno==0){//acheiii
-                    return aux;
+                    return aux;//endereço do nó
                 }else if(retorno>0){//não acheiii!!!!
                     return null;
                 }else{//procurando....
-                    aux=aux.getAnt();
+                    aux=aux.getProx();
                 }
             }
         }
         return null;//não achou o valor, pois o valor é o maior que o ultimo.
     }
     public void Remover(Cliente c){//continuar remoção - exercicio 
-        Node retorno;
-        retorno= buscaMelhorada(c);
+        Node retorno, anterior, proximo;
         if(this.isEmpty()==true){
             System.out.println("Lista vázia!");
-        }else{
-            if(this.qtd==1){//remoção só tem 1 - lista vazia
+        }else if(this.qtd==1){
+                if(c.compareTo(this.primeiro.getInfo())==0){//lista só tem 1 elemento
                 this.primeiro=null;
                 this.ultimo=null;
                 this.qtd--;
                 System.out.println("Remoção efetuada!");
                 System.out.println("Lista vázia!");
+            }else{
+                System.out.println("Não tem na lista");
             }
-            if(retorno!=null){//remoção no meio
-                retorno.setProx(retorno.getAnt());//
-                retorno.setAnt(retorno.getProx());
-                this.qtd--;
-                System.out.println("Remoção efetuada! ");
-                return;
-            }else{  
-                System.out.println("Não encontrado");
-//remoção do ultimo
-               /* this.ultimo=this.ultimo.getAnt();
-                this.ultimo.setProx(null);
-                this.qtd--;*/            
+        }else{
+            retorno= buscaMelhorada(c);
+                if(retorno==null){
+                    System.out.println("Valor não encontrado!");
+                }else{
+                    if(this.primeiro==retorno){
+                        this.primeiro= this.primeiro.getProx();
+                        this.primeiro.setAnt(null);
+                        this.qtd--;
+                        System.out.println("Remoção efetuada!");
+                    }else if(this.ultimo==retorno){
+                        this.ultimo= this.ultimo.getAnt();
+                        this.ultimo.setProx(null);
+                        this.qtd--;
+                        System.out.println("Remoção efetuada!");
+                    }else{
+                        anterior= retorno.getAnt();
+                        proximo= retorno.getProx();
+                        anterior.setProx(proximo);
+                        proximo.setAnt(anterior);
+                        this.qtd--;
+                        System.out.println("Remoção efetuada!");
+                    }
+                }
             }
         }
     }
-}  
+ 
