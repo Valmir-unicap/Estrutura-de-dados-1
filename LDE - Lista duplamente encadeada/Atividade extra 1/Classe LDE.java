@@ -1,5 +1,6 @@
 package controledetarefas;
 public class LDE {
+    
     private Node primeiro;
     private Node ultimo;
     private int qtd;
@@ -20,32 +21,34 @@ public class LDE {
             this.primeiro= novo;
             this.ultimo= novo;
             this.qtd++;
+            System.out.println("Inserção efetuada!");
         }else{
             if(t.compareTo(this.primeiro.getInfo())>=0){//inserção após o primeiro
                novo.setProx(this.primeiro);
                this.primeiro=novo;
                this.primeiro.setAnt(null);
                this.qtd++;
-            }else if(t.compareTo(this.ultimo.getInfo())<=0){//inserção a fim
+               System.out.println("Inserção efetuada!");
+            }else if(t.compareTo(this.ultimo.getInfo())<=0){//inserção após o fim
                 this.ultimo.setProx(novo);
                 novo.setAnt(this.ultimo);
                 this.qtd++;
+                System.out.println("Inserção efetuada!");
             }else{//inserção no meio
                aux= this.primeiro;
                while(aux!=null){
                    retorno= aux.getInfo().getDescricao().compareTo(t.getDescricao());//duas descriçõs iguais não pode
                    if(retorno==0){//é repetido?
-                       System.out.println("Está descricao é repetida!");
-                       System.out.println("Inserção não foi efetuada!");
+                       System.out.println("Está descricao é repetida! Inserção não foi efetuada!");
+                       return;
                    }else if(retorno>=0){//inserir no meio
                        pegaAnterior= aux.getAnt();
-                       //pegaProximo= aux.getProx();
                        novo.setAnt(pegaAnterior);
                        novo.setProx(aux);
                        pegaAnterior.setProx(novo);
                        aux.setAnt(novo);
                        this.qtd++;
-                       System.out.println("Inserção realizada!");
+                       System.out.println("Inserção efetuada!");
                        return;
                    }else{
                        aux=aux.getProx();//procurando..
@@ -73,14 +76,12 @@ public class LDE {
             System.out.println("Lista vázia!");
         }else{
             aux=this.primeiro;
-            retorno= aux.getInfo().getPrioridade().compareTo(t.getPrioridade());
-            if(retorno==0){
-                while(aux!=null){
+            while(aux!=null){
+                retorno= aux.getInfo().getPrioridade().compareTo(t.getPrioridade());
+                if(retorno==0){
                     System.out.println(aux.getInfo().getDescricao());
-                    aux=aux.getProx();
-                }
-            }else{
-                System.out.println("Não tem este grau de prioridade ");
+                } 
+                aux=aux.getProx();
             }
         }
     }
@@ -109,6 +110,18 @@ public class LDE {
                 }else{//remoção no meio
                     
                 }
+            }
+        }
+    }
+    public void exibirTudo(){
+        Node aux;
+        if(this.isEmpty()==true){
+            System.out.println("Lista vázia!");
+        }else{
+            aux= this.primeiro;
+            while(aux!=null){
+                System.out.println(aux.getInfo());
+                aux=aux.getProx();
             }
         }
     }
