@@ -1,14 +1,12 @@
 package controledetarefas;
-import  java.util.Scanner;
+import java.util.Scanner;
 public class ControleDeTarefas {
     public static void main(String[] args) {
        Scanner in= new Scanner(System.in);
        LDE listaTarefas= new LDE();
        String tarefa, descricao, prioridade;
-       Prioridades p = null ;
-       int escolha;
+       int escolha, conversao;
        Tarefas t;
-       p.PRIORIDADE1.getPRIORIDADE();
        do{
            menu();
            escolha= in.nextInt();
@@ -19,8 +17,14 @@ public class ControleDeTarefas {
                    tarefa= in.nextLine();
                    System.out.print("Digite a descrição da tarefa: ");
                    descricao= in.nextLine();
-                   System.out.print("Digite a prioridade da tarefa");
-                   prioridade= in.nextLine();
+                   System.out.print("Digite o grau de prioridade da tarefa: ");
+                   conversao= in.nextInt();
+                   while(conversao<0 || conversao>10){
+                        System.out.println("Inválido!");
+                        System.out.print("Digite o grau de prioridade da tarefa: ");
+                        conversao= in.nextInt();
+                   }
+                   prioridade= String.valueOf(conversao);
                    t= new Tarefas(tarefa,descricao,prioridade);
                    listaTarefas.inserirOrdenado(t);
                    break;
@@ -32,10 +36,13 @@ public class ControleDeTarefas {
                case 3://exibir tarefas por prioridades
                    in.nextLine();
                    System.out.println("Digite o grau de prioridade: ");
-                   prioridade= in.nextLine();
-                   while(prioridade!="1" || prioridade=="2" || prioridade=="3" || prioridade=="4" || prioridade=="5" ||prioridade=="6" || prioridade=="7" || prioridade=="8" || prioridade=="9" || prioridade=="10"){
-                       
+                   conversao= in.nextInt();
+                   while(conversao<0 || conversao>10){
+                        System.out.println("Inválido!");
+                        System.out.print("Digite o grau de prioridade da tarefa: ");
+                        conversao= in.nextInt();
                    }
+                   prioridade= String.valueOf(conversao);
                    t= new Tarefas(prioridade);
                    listaTarefas.exibirPorPrioridade(t);
                    break;
@@ -49,6 +56,9 @@ public class ControleDeTarefas {
                    in.nextLine();
                    break;
                    
+               case 6:
+                   listaTarefas.exibirTudo();
+                   break;
                case 0:
                    System.out.println("Fim do programa! @Developer Valmir Jr");
                    break;
@@ -62,6 +72,7 @@ public class ControleDeTarefas {
     }
     
     public static void menu(){
+        System.out.println("");
         System.out.println("Lista de tarefas");
         System.out.println("");
         System.out.println("1- Criar nova tarefa");
@@ -69,8 +80,8 @@ public class ControleDeTarefas {
         System.out.println("3- Exibir tarefas por prioridades");
         System.out.println("4- Exibir descrição e prioridades de todas as tarefas");
         System.out.println("5- Alterar prioridade da tarefa");
-        System.out.println("0- Sair do programa!");
+        System.out.println("6- Exibir tudo");
+        System.out.println("0- Sair do programa");
         System.out.print("Escolha uma opção: ");
     }
-    
 }
