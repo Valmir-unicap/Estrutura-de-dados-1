@@ -1,5 +1,4 @@
 package controledetarefas;
-
 public class Tarefas implements Comparable <Tarefas>{
 
     private String tarefa;
