@@ -8,11 +8,14 @@ public class Tarefas implements Comparable <Tarefas>{
     public Tarefas(String prioridade){//construtor
         this.prioridade=prioridade;
     }
-    public Tarefas(String tarefa, String descricao, String prioridade){//não permite repetidos
+    public Tarefas(String tarefa, String descricao, String prioridade){//não permite repetidos //construtor
         this.tarefa= tarefa;
         this.descricao=descricao;
         this.prioridade=prioridade;
     }
+    /*public Tarefas(String descricao){
+        this.descricao= descricao;
+    }*/
     public void setTarefa(String tarefa){
         this.tarefa= tarefa;
     }
@@ -35,8 +38,14 @@ public class Tarefas implements Comparable <Tarefas>{
     public String toString(){
         return "A tarefa: "+this.tarefa+", da descricao: "+this.descricao+", da prioridade: "+this.prioridade;
     }
+    public String toStringPrioridadesComDescricao(){
+       return "A descricao: "+this.descricao+", da prioridade: "+this.prioridade; 
+    }
+    public String toStringDescricao(){
+       return "A descricao: "+this.descricao; 
+    }
     @Override
     public int compareTo (Tarefas t) {
-        return this.prioridade.compareTo(t.prioridade);        
+        return this.descricao.compareTo(t.descricao);        
     }
 }
