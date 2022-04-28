@@ -17,25 +17,29 @@ public class ControleDeTarefas {
                    tarefa= in.nextLine();
                    System.out.print("Digite a descrição da tarefa: ");
                    descricao= in.nextLine();
-                   System.out.print("Digite o grau de prioridade da tarefa: ");
+                   System.out.print("Digite o grau de prioridade desta tarefa: ");
                    conversao= in.nextInt();
                    while(conversao<0 || conversao>10){
                         System.out.println("Inválido!");
                         System.out.print("Digite o grau de prioridade da tarefa: ");
                         conversao= in.nextInt();
                    }
-                   prioridade= String.valueOf(conversao);
+                   prioridade= String.valueOf(conversao);//converto int para string
                    t= new Tarefas(tarefa,descricao,prioridade);
                    listaTarefas.inserirOrdenado(t);
                    break;
                    
                case 2://remover tarefa
                    in.nextLine();
+                   System.out.print("Informe a descrição que deseja remover da lista: ");
+                   descricao= in.nextLine();
+                   t= new Tarefas(descricao);
+                   listaTarefas.remover(t);
                    break;
                    
                case 3://exibir tarefas por prioridades
                    in.nextLine();
-                   System.out.println("Digite o grau de prioridade: ");
+                   System.out.print("Digite o grau de prioridade: ");
                    conversao= in.nextInt();
                    while(conversao<0 || conversao>10){
                         System.out.println("Inválido!");
@@ -49,16 +53,21 @@ public class ControleDeTarefas {
                    
                case 4://Exibir descrição e prioridades de todas as tarefa
                    in.nextLine();
-                   listaTarefas.exibirDescricao();
+                   listaTarefas.exibirDescricaoComPrioridades();
                    break;
                    
                case 5://Alterar prioridade da tarefa
                    in.nextLine();
+                   System.out.print("Digite qual tarefa, que desja alterar a prioridade: ");
+                   tarefa= in.nextLine();
+                   t= new Tarefas(tarefa);
+                   listaTarefas.alterarPrioridade(t);
                    break;
                    
                case 6:
                    listaTarefas.exibirTudo();
                    break;
+                   
                case 0:
                    System.out.println("Fim do programa! @Developer Valmir Jr");
                    break;
@@ -76,7 +85,7 @@ public class ControleDeTarefas {
         System.out.println("Lista de tarefas");
         System.out.println("");
         System.out.println("1- Criar nova tarefa");
-        System.out.println("2- Remover uma tarefa");
+        System.out.println("2- Remover uma tarefa da lista");
         System.out.println("3- Exibir tarefas por prioridades");
         System.out.println("4- Exibir descrição e prioridades de todas as tarefas");
         System.out.println("5- Alterar prioridade da tarefa");
