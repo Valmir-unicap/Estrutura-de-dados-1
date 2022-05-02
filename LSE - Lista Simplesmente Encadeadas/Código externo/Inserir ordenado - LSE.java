@@ -26,7 +26,7 @@
             aux= this.primeiro;
             atual= aux.getProximo();
             while(aux!=null){
-                if(novo.getInformacao().compareTo(atual.getInformacao())<0){
+                if(novo.getInformacao().compareTo(atual.getInformacao())<0){//inserção no meio
                     aux.setProximo(novo);
                     novo.setProximo(atual);
                     this.quantidade++;
