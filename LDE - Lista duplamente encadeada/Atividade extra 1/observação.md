@@ -1,1 +1,1 @@
-# Faltou o metódo executar
+# Faltou o método executar e consertar remover
