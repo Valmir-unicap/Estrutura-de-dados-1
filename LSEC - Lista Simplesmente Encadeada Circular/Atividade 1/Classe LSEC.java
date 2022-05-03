@@ -42,7 +42,7 @@ public class LSEC {
             aux= this.primeiro;
             atual= aux.getProximo();
             do{
-                if(novo.getInformacao().compareTo(atual.getInformacao())<0){
+                if(novo.getInformacao().compareTo(atual.getInformacao())<0){//inserção no meio
                     aux.setProximo(novo);
                     novo.setProximo(atual);
                     this.quantidade++;
@@ -92,29 +92,11 @@ public class LSEC {
             System.out.println("Livro não foi encontrado!");
         }
     }
-    /*private Node buscaMelhorada(Livro l){
-         Node aux;
-         int retorno;
-         if(this.isEmpty()==true){
-             return null;
-         }else{
-             aux= this.primeiro;
-             do{
-                 retorno= l.getTitulo().compareTo(aux.getInformacao().getTitulo());
-                 if(retorno==0){
-                     return aux;//achei o endereço do nó
-                 }else if(retorno>0){
-                     return null;
-                 }else{
-                    aux=aux.getProximo();
-                 }
-             }while(aux!=this.primeiro);
-         }
-         return null;
-    }*/
+
     public void remover(Livro l){//remover está errado!
-        Node aux,retorno,anterior,atual;
-        aux= this.primeiro;
+        Node anterior,atual;
+        int retorno;
+        //retorno= buscaMelhorada(l);
         if(this.isEmpty()==true){
             System.out.println("Lista vázia!");
         }else if(this.quantidade==1){
@@ -127,37 +109,44 @@ public class LSEC {
                 }else{
                     System.out.println("Não foi encontrado na lista.");
                 }
-            
-        }else if(l.getTitulo().compareTo(this.primeiro.getInformacao().getTitulo())==0){//remoção no primeiro
+        }else {//lista tem mais 1 elementos
+            if(l.getTitulo().compareTo(this.primeiro.getInformacao().getTitulo())==0){//remoção no primeiro
                 this.primeiro= this.primeiro.getProximo();
                 this.quantidade--;
                 this.ultimo.setProximo(this.primeiro);
                 System.out.println("Remoção efetuada!");
-                
         }else if(l.getTitulo().compareTo(this.ultimo.getInformacao().getTitulo())==0){//remoção no ultimo
-                while(aux!=this.ultimo){
-                    aux=aux.getProximo();
+                anterior= this.primeiro;
+                while(anterior.getProximo()!=this.ultimo){
+                    anterior=anterior.getProximo();
                 }
-                this.ultimo=aux;
+                this.ultimo=anterior;
                 this.quantidade--;
                 this.ultimo.setProximo(this.primeiro);
                 System.out.println("Remoção efetuada!");
-           
-        }else{//remoção no meio
-                anterior= this.primeiro;
-                atual=this.primeiro.getProximo();
-                while(atual!=this.ultimo){
-                    if(l.getTitulo().compareTo(aux.getInformacao().getTitulo())==0){
-                        anterior.setProximo(atual.getProximo());
-                        this.quantidade--;
-                        this.ultimo.setProximo(this.primeiro);
-                        System.out.println("Remoção efetuada!");
+        }else if(l.compareTo(this.primeiro.getInformacao())<0){//verifica se for menor que o primeiro
+                System.out.println("Livro não encontrado!");
+        }else if(l.compareTo(this.ultimo.getInformacao())>0){//verifica se for maior que o ultimo
+                System.out.println("Livro não encontrado!");
+        }else{
+            anterior= this.primeiro;
+            atual= anterior.getProximo();
+            do{
+                retorno= atual.getInformacao().compareTo(l);
+                if(retorno==0){//achou //remoção no meio não afeta a circularidade da lista
+                    anterior.setProximo(atual.getProximo());
+                    this.quantidade--;
+                    System.out.println("Remoção efetuada!");
+                    return;
+                }else if(retorno>0){
+                        System.out.println("Livro não encontrado!");
                         return;
-                    }else{
-                        anterior=atual;
-                        atual=atual.getProximo(); 
-                    }
+                }else{
+                    anterior=atual;//anterior=anterior.getProximo();
+                    atual= atual.getProximo();
                 }
-            }
+            }while(atual!=this.primeiro);
+        }
         }
     }
+}
