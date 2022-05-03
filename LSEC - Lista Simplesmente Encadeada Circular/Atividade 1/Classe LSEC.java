@@ -93,7 +93,7 @@ public class LSEC {
         }
     }
 
-    public void remover(Livro l){//remover está errado!
+    public void remover(Livro l){//remover ordenado
         Node anterior,atual;
         int retorno;
         //retorno= buscaMelhorada(l);
