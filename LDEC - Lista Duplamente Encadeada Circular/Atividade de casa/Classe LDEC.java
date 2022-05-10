@@ -154,7 +154,7 @@ public class LDEC {
             return lista2;
         }else{
             aux1= this.primeiro;
-            for(i=1;i<=tamanho-1;i=i+1){//
+            for(i=0;i<tamanho;i=i+1){//
                 aux1=aux1.getProx();
             }
             aux2= aux1.getProx();
