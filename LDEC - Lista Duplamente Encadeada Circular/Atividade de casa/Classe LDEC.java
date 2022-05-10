@@ -149,7 +149,7 @@ public class LDEC {
         //Criando a lista 2
         LDEC lista2= new LDEC();
         //Passo 1 achar meio da lista original
-        if(this.isEmpty()==true){
+        if(this.isEmpty()==true || this.qtd==1){
             System.out.println("Lista vázia!");
             return lista2;
         }else{
