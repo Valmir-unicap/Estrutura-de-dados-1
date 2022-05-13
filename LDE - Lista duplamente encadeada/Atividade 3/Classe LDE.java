@@ -94,7 +94,7 @@ public class LDE {//ordenada ordem crescente
         }
         return null;//não achou o valor, pois o valor é o maior que o ultimo.
     }
-    public void Remover(Cliente c){//remoção - exercicio 
+    public void Remover(Cliente c){//remoção ordenada 
         Node retorno, anterior, proximo;
         if(this.isEmpty()==true){
             System.out.println("Lista vázia!");
