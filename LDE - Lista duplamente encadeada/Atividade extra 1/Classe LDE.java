@@ -89,7 +89,7 @@ public class LDE {
             }
         }
     }
-    public void remover(Tarefas t){//para descrição iguais
+    public void remover(Tarefas t){//para descrição iguais //Falta verificar
         Node pegaAnterior,pegaProximo,retorno;
         if(this.isEmpty()==true){
             System.out.println("Lista vázia!");
