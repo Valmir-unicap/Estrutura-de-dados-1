@@ -1,4 +1,5 @@
- public void Remover(String matr){
+//Ordenação só em LDE 
+public void Remover(String matr){//REMOVER LSE
         Aluno proc = new Aluno(matr);
         Node atual, anterior;
         if(this.isEmpty()==true){//lista vázia
