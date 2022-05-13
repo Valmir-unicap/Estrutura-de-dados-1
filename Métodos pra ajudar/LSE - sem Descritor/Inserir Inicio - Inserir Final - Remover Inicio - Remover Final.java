@@ -1,3 +1,4 @@
+//sem descritor, significa que não possui o endereço do ultimo
 public class LSE {
 
     private Node primeiro;
