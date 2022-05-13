@@ -3,10 +3,6 @@ package listaduplamenteencadeada;
  * @author valmir
  */
 
-//Próximo exercício variações
-//1- Inserir em ordem descrescente
-//2- Permitir valores repetidos -Após -Antes
-
 //função não se exibe mensagem
 
 public class LDE {//ordenada ordem crescente
