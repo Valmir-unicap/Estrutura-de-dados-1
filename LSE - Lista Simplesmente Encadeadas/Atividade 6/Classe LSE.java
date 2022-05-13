@@ -47,17 +47,19 @@ public class LSE {
             return lista3;
         }else{
             Node aux1= this.primeiro;
-            Node aux2= lista2.primeiro;
-            while(aux1!= null && aux2!=null){
-                if(aux1.getInformacao().compareTo(aux2.getInformacao())==0){
-                    valor1= aux1.getInformacao();
-                    //valor3= new Integer(valor1);
-                    lista3.inserirInicio(valor1);
-                    contador= contador+1;
-                    System.out.println("Interpolação efetuada "+contador+" vezes.");
-                }
-                    aux1=aux1.getProximo();
+            
+            while(aux1!= null){
+                Node aux2= lista2.primeiro;
+                while(aux2!=null){
+                    if(aux1.getInformacao().compareTo(aux2.getInformacao())==0){
+                        valor1= aux1.getInformacao();
+                        lista3.inserirInicio(valor1);
+                        contador= contador+1;
+                        System.out.println("Interpolação efetuada "+contador+" vezes.");
+                    }
                     aux2=aux2.getProximo();
+                }
+                aux1=aux1.getProximo();
                 }
             }
         return lista3;
