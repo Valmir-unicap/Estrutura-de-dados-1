@@ -46,8 +46,7 @@ public class LSE {
             System.out.println("Lista vázia");
             return lista3;
         }else{
-            Node aux1= this.primeiro;
-            
+            Node aux1= this.primeiro;      
             while(aux1!= null){
                 Node aux2= lista2.primeiro;
                 while(aux2!=null){
